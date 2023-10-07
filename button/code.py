@@ -24,7 +24,7 @@ while True:
     else:
         led.value = True
         print("<B>")
-        buildinLed.flash()
+        buildinLed.blink()
 
     buildinLed.process()
     time.sleep(0.1)

@@ -25,10 +25,11 @@ class BuildinLed:
             self.led = digitalio.DigitalInOut(pin)
             self.led.direction = digitalio.Direction.OUTPUT
         else:
-            self.led = neopixel.NeoPixel(pin, 1)
+            self.led = neopixel.NeoPixel(pin, 1, brightness=0.1)
         self.rgb = rgb
         self.lastBlink = float(0)
         self.blinkRate = float(0.5)
+        self.fastRate = float(0.1)
         self.flashRate = float(0.05)
         self.currentRate = self.blinkRate
 
@@ -39,6 +40,10 @@ class BuildinLed:
     def blink(self):
         self.mode = BLINK
         self.currentRate = self.blinkRate
+
+    def fast(self):
+        self.mode = BLINK
+        self.currentRate = self.fastRate
 
     def flash(self):
         self.mode = FLASH
