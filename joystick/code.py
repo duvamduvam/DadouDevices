@@ -3,7 +3,8 @@ import board
 from buildinLed import BuildinLed
 from digitalio import DigitalInOut, Direction, Pull
 import time
-
+import supervisor
+supervisor.runtime.autoreload = False
 #print(dir(board))
 print("start josystick")
 
@@ -40,13 +41,14 @@ while True:
         x_axis = x_axis_pin.value
         y_axis = y_axis_pin.value
         # print((x_axis,y_axis))
-        x_value = mapping(x_axis, 0, 65535, -100, 100)
-        y_value = mapping(y_axis, 0, 65535, -100, 100)
-        print("{},{}".format(x_axis, y_axis))
-        print("{},{}".format(x_value, y_value))
+        x_value = mapping(x_axis, 0, 65535, 10, 99)
+        y_value = mapping(y_axis, 0, 65535, 10, 99)
+        #print("joystick values : {},{}".format(x_axis, y_axis))
+        print("<{}{}>".format(x_value, y_value))
         buildinLed.flash()
-
+        buildinLed.fast()
     else:
-        buildinLed.process()
+        buildinLed.blink()
 
+    buildinLed.process()
     time.sleep(0.1)

@@ -20,7 +20,7 @@ class BuildinLed:
     flashCount = 0
     mode = BLINK
 
-    def __init__(self, pin=board.LED, rgb=False):
+    def __init__(self, pin, rgb=False):
         if not rgb:
             self.led = digitalio.DigitalInOut(pin)
             self.led.direction = digitalio.Direction.OUTPUT
