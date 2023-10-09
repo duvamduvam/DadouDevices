@@ -8,6 +8,9 @@ from vibrator import Vibrator
 #from bno055 import BNO055
 import adafruit_lsm303_accel
 
+import supervisor
+supervisor.runtime.autoreload = False
+
 keyboard = GloveKeys((("x", "w", "v"), ("r", "q", "p"), ("o", "n", "m"), ("u", "t", "s")),
                      (board.GP10, board.GP11, board.GP12),
                      (board.GP6, board.GP7, board.GP8, board.GP9))
