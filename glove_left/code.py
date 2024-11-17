@@ -13,7 +13,6 @@ keyboard = GloveKeys((("c", "b", "a"), ("f", "e", "d"), ("i", "h", "g"), ("l", "
 
 buildinLed = BuildinLed(pin=board.LED)
 vibrator = Vibrator(board.GP14)
-
 print("start glove")
 
 while True:
