@@ -30,6 +30,5 @@ class GloveKeys:
         if event and (time.monotonic() > (self.lastKeyTime + self.timeout)):
             self.lastKeyTime = time.monotonic()
             #print("Pressed: ", keys[0], "time ", time.monotonic(), "lastKeyTime ", self.lastKeyTime)
-            #print("Pressed: ", keys[0])
             return event.key_number
         return None
