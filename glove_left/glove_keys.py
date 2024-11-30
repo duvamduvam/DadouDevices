@@ -8,6 +8,9 @@ class GloveKeys:
     lastKeyTime = 0
     timeout = 0.25
 
+    key_number = None
+    pressed = False
+
     def __init__(self, cols, rows):
 
         #self.keys = (("c", "b", "a"), ("f", "e", "d"), ("i", "h", "g"), ("l ", "k", "j"))
@@ -26,9 +29,20 @@ class GloveKeys:
 
     def check(self):
         event = self.keypad.events.get()
+        #if not temp and event.
+        #event = pressed.get()
 
-        if event and (time.monotonic() > (self.lastKeyTime + self.timeout)):
+        if event and event.pressed:
+            self.pressed = True
+            self.key_number = event.key_number
+
+        elif event and event.released:
+            self.pressed = False
+
+        if self.pressed and (time.monotonic() > (self.lastKeyTime + self.timeout)):
             self.lastKeyTime = time.monotonic()
-            #print("Pressed: ", keys[0], "time ", time.monotonic(), "lastKeyTime ", self.lastKeyTime)
-            return event.key_number
+            #print("Pressed: ", event, "time ", time.monotonic(), "lastKeyTime ", self.lastKeyTime)
+            #print("Pressed: ", keys[0])
+            return self.key_number
         return None
+

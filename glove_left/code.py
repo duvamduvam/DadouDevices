@@ -29,7 +29,6 @@ while True:
             time.sleep(0.05)
         buildinLed.process()
         vibrator.process()
-        #bno055.process()
 
     except Exception as e:
         print("error : {}".format(e))
